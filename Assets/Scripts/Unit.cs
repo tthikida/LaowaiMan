@@ -8,7 +8,6 @@ public class Unit : MonoBehaviour
     [SerializeField] private float stoppingDistance = 0.1f;
     private Vector3 targetPosition;
 
-
     void Update()
     {
         if(Vector3.Distance(targetPosition, transform.position) > stoppingDistance)
@@ -16,9 +15,9 @@ public class Unit : MonoBehaviour
             Move();
         }
 
-        if (Input.GetKey("t"))
+        if (Input.GetMouseButtonDown(0))
         {
-            SetTargetPosition(new Vector3(4,0,  4));
+            SetTargetPosition(MouseWorld.GetPosition());
         }
 
     }
