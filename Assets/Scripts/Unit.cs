@@ -6,6 +6,7 @@ public class Unit : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 4f;
     [SerializeField] private float stoppingDistance = 0.1f;
+    [SerializeField] private Animator unitAnimator;
     private Vector3 targetPosition;
 
     void Update()
@@ -13,6 +14,11 @@ public class Unit : MonoBehaviour
         if(Vector3.Distance(targetPosition, transform.position) > stoppingDistance)
         {
             Move();
+            unitAnimator.SetBool("isRunning", true);
+        }
+        else
+        {
+            unitAnimator.SetBool("isRunning", false);
         }
 
         if (Input.GetMouseButtonDown(0))
