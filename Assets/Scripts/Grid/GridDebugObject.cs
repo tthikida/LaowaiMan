@@ -6,14 +6,12 @@ using TMPro;
 public class GridDebugObject : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI textMeshPro;
-    private GridObject gridObject;
+    private object gridObject;
 
-    public void SetGridObject(GridObject gridObject)
+    public void SetGridObject(object gridObject)
     {
         this.gridObject = gridObject;
     }
-
-
 
         private void Update()
     {
