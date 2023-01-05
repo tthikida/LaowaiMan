@@ -20,5 +20,15 @@ public class Testing : MonoBehaviour
                 print("Position: " + position);
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            GridSystemVisual.Instance.HideAllGridPositions();
+        }
+
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            GridSystemVisual.Instance.ShowGridPositionList(unit.GetMoveAction().GetValidActionGridPositionList());
+        }
     }
 }
