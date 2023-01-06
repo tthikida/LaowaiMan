@@ -8,24 +8,28 @@ public class ActionButtonUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI textMeshPro;
     [SerializeField] private Button button;
-    [SerializeField] private GameObject selectedGameObject;
 
-    private BaseAction baseAction;
+
 
     public void SetBaseAction(BaseAction baseAction)
     {
-        this.baseAction = baseAction;
+        print("setBaseAction");
+        
         textMeshPro.text = baseAction.GetActionName().ToUpper();
 
-        button.onClick.AddListener(() =>
-        {
+
+        button.onClick.AddListener(() => {
+            print("button clicked");
             UnitActionSystem.Instance.SetSelectedAction(baseAction);
+            print(baseAction);
         });
+
+        //button.onClick.AddListener(MoveActionBtn_Click);
     }
 
-    public void UpdateSelectedVisual()
+    private void MoveActionBtn_Click()
     {
-        BaseAction selectedBaseAction = UnitActionSystem.Instance.GetSelectedAction();
-        selectedGameObject.SetActive(selectedBaseAction == baseAction);
+        print("clicked");
+
     }
 }

@@ -35,10 +35,9 @@ public class UnitActionSystem : MonoBehaviour
     private void Update()
     {
         if (isBusy) { return; }
-        if (EventSystem.current.IsPointerOverGameObject())
-        {
-            return;
-        }
+
+        if (Input.GetMouseButtonDown(0))
+
 
         if (TryHandleUnitSelection()) { return; }
 
@@ -116,7 +115,8 @@ public class UnitActionSystem : MonoBehaviour
     private void SetSelectedUnit(Unit unit)
     {
         selectedUnit = unit;
-        SetSelectedAction(unit.GetMoveAction());
+        SetSelectedAction(unit.GetMoveAction()) ;
+
         OnSelectedUnitChanged?.Invoke(this, EventArgs.Empty);
     }
 
