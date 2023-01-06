@@ -175,7 +175,7 @@ MonoBehaviour:
   rotateSpeed: 10
   stoppingDistance: 0.1
   unitAnimator: {fileID: 5522775268641444187}
-  maxMoveDistance: 1
+  maxMoveDistance: 3
 --- !u!114 &-1832297615842104410
 MonoBehaviour:
   m_ObjectHideFlags: 0
