@@ -25,6 +25,7 @@ public class MouseWorld : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             transform.position = MouseWorld.GetPosition();
+            print("mouse down - getPosition");
         }
     }
 

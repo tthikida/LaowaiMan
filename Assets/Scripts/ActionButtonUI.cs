@@ -10,6 +10,7 @@ public class ActionButtonUI : MonoBehaviour
     [SerializeField] private Button button;
 
 
+
     public void SetBaseAction(BaseAction baseAction)
     {
         print("setBaseAction");
@@ -29,5 +30,6 @@ public class ActionButtonUI : MonoBehaviour
     private void MoveActionBtn_Click()
     {
         print("clicked");
+
     }
 }
