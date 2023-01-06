@@ -9,6 +9,13 @@ public class UnitActionSystemUI : MonoBehaviour
     [SerializeField] private Transform actionButtonPrefab;
     [SerializeField] private Transform actionButtonContainerTransform;
 
+    private List<ActionButtonUI> actionButtonUIList;
+
+    private void Awake()
+    {
+        actionButtonUIList = new List<ActionButtonUI>();
+    }
+
     private void Start()
     {
         UnitActionSystem.Instance.OnSelectedUnitChanged += UnitActionSystem_OnSelectedUnitChanged;
@@ -23,6 +30,8 @@ public class UnitActionSystemUI : MonoBehaviour
             Destroy(buttonTransform.gameObject);
         }
 
+        actionButtonUIList.Clear();
+
         Unit selectedUnit = UnitActionSystem.Instance.GetSeletedUnit();
 
         foreach(BaseAction baseAction in selectedUnit.GetBaseActionArray())
@@ -30,6 +39,8 @@ public class UnitActionSystemUI : MonoBehaviour
             Transform actionButtonTransform = Instantiate(actionButtonPrefab, actionButtonContainerTransform);
             ActionButtonUI actionButtonUI = actionButtonTransform.GetComponent<ActionButtonUI>();
             actionButtonUI.SetBaseAction(baseAction);
+
+            actionButtonUIList.Add(actionButtonUI);
         }
     }
 

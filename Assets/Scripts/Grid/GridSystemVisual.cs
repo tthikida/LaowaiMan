@@ -13,7 +13,6 @@ public class GridSystemVisual : MonoBehaviour
     private void Awake()
     {
 
-        print("transform: " + transform);
         if (Instance != null)
         {
             Debug.LogError("There is more than one GridSystemVisual " + transform + " - " + Instance);
@@ -73,8 +72,9 @@ public class GridSystemVisual : MonoBehaviour
     {
         HideAllGridPositions();
 
-        Unit selectedUnit = UnitActionSystem.Instance.GetSeletedUnit();
+        //Unit selectedUnit = UnitActionSystem.Instance.GetSeletedUnit();
+        BaseAction selectedAction = UnitActionSystem.Instance.GetSelectedAction();
 
-        ShowGridPositionList(selectedUnit.GetMoveAction().GetValidActionGridPositionList());
+        ShowGridPositionList(selectedAction.GetValidActionGridPositionList());
     }
 }
