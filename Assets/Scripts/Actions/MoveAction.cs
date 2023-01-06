@@ -65,6 +65,7 @@ public class MoveAction : BaseAction
 
         GridPosition unitGridPosition = unit.GetGridPosition();
 
+        print("maxMoveDistance: " + maxMoveDistance);
         for (int x = -maxMoveDistance; x <= maxMoveDistance; x++)
         {
             for(int z = -maxMoveDistance; z <= maxMoveDistance; z++)

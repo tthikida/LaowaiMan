@@ -12,7 +12,6 @@ public class UnitActionSystem : MonoBehaviour
     [SerializeField] private Unit selectedUnit;
     [SerializeField] private LayerMask unitLayerMask;
 
-    private BaseAction selectedAction;
     private bool isBusy;
 
     private void Awake()
@@ -26,15 +25,9 @@ public class UnitActionSystem : MonoBehaviour
         Instance = this;
     }
 
-    private void Start()
-    {
-        SetSelectedUnit(selectedUnit);
-    }
-
     private void Update()
     {
         if (isBusy) { return; }
-
         if (Input.GetMouseButtonDown(0))
         {
             if (TryHandleUnitSelection()) return;
@@ -83,13 +76,7 @@ public class UnitActionSystem : MonoBehaviour
     private void SetSelectedUnit(Unit unit)
     {
         selectedUnit = unit;
-        SetSelectedAction(unit.GetMoveAction()) ;
         OnSelectedUnitChanged?.Invoke(this, EventArgs.Empty);
-    }
-
-    public void SetSelectedAction(BaseAction baseAction)
-    {
-        selectedAction = baseAction;
     }
 
     public Unit GetSeletedUnit()
