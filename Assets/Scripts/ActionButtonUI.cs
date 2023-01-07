@@ -13,13 +13,15 @@ public class ActionButtonUI : MonoBehaviour
     public void SetBaseAction(BaseAction baseAction)
     {
         textMeshPro.text = baseAction.GetActionName().ToUpper();
-<<<<<<< HEAD
+
 
 
         button.onClick.AddListener(() => {
             print("button clicked");
             UnitActionSystem.Instance.SetSelectedAction(baseAction);
-            print(baseAction);
+
+            print("baseAction: " + baseAction);
+
         });
 
         //button.onClick.AddListener(MoveActionBtn_Click);
@@ -29,7 +31,6 @@ public class ActionButtonUI : MonoBehaviour
     {
         print("clicked");
 
-=======
->>>>>>> parent of cd48d16 (addListener working)
+
     }
 }
