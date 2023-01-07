@@ -15,6 +15,7 @@ public class ActionButtonUI : MonoBehaviour
 
         button.onClick.AddListener(() => {
             UnitActionSystem.Instance.SetSelectedAction(baseAction);
+            //UnitActionSystem.Instance.gameObject.GetComponent<Outline>().effectColor = Color.green;
             print("baseAction: " + baseAction);
         });
     }

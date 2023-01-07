@@ -7,7 +7,7 @@ public class SpinAction : BaseAction
 {
     public delegate void SpinCompleteDelegate();
     private float totalSpinAmount;
-    
+
     void Update()
     {
         if (!isActive) { return; }
@@ -16,10 +16,10 @@ public class SpinAction : BaseAction
 
         transform.eulerAngles += new Vector3(0, spinAddAmount, 0);
         print(transform.eulerAngles);
-            
+
 
         totalSpinAmount += spinAddAmount;
-        if(totalSpinAmount >= 360)
+        if (totalSpinAmount >= 360)
         {
             isActive = false;
             onActionComplete();
@@ -27,7 +27,10 @@ public class SpinAction : BaseAction
 
     }
 
-    public void Spin(Action onActionComplete)
+    public class BaseParameters { }
+    public class SpinBaseParameters : BaseParameters { }
+
+    public override void TakeAction(GridPosition gridPosition, Action onActionComplete)
     {
         this.onActionComplete = onActionComplete;
         isActive = true;
@@ -37,5 +40,15 @@ public class SpinAction : BaseAction
     public override string GetActionName()
     {
         return "Spin";
+    }
+
+    public override List<GridPosition> GetValidActionGridPositionList()
+    {
+        GridPosition unitGridPosition = unit.GetGridPosition();
+
+        return new List<GridPosition>
+        {
+            unitGridPosition
+        };
     }
 }

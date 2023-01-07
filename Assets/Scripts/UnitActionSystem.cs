@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class UnitActionSystem : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class UnitActionSystem : MonoBehaviour
 
     private BaseAction selectedAction;
     private bool isBusy;
+    private int pid = 1;
 
     private void Awake()
     {
@@ -34,7 +36,11 @@ public class UnitActionSystem : MonoBehaviour
     private void Update()
     {
         if (isBusy) { return; }
-
+        if (EventSystem.current.currentSelectedGameObject)
+        {
+            return;
+        }
+        
         if (TryHandleUnitSelection()) { return; }
 
         
@@ -47,21 +53,10 @@ public class UnitActionSystem : MonoBehaviour
         {
             GridPosition mouseGridPosition = LevelGrid.Instance.GetGridPosition(MouseWorld.GetPosition());
 
-            switch(selectedAction)
+            if(selectedAction.IsValidActionGridPosition(mouseGridPosition))
             {
-                case MoveAction moveAction:
-                    if (moveAction.IsValidActionGridPosition(mouseGridPosition))
-                    {
-                        SetBusy();
-                        moveAction.Move(mouseGridPosition, ClearBusy);
-                    }
-                    break;
-                case SpinAction spinAction:
-                    SetBusy();
-                    selectedUnit.GetSpinAction().Spin(ClearBusy);
-                    spinAction.Spin(ClearBusy);
-                    break;
-
+                SetBusy();
+                selectedAction.TakeAction(mouseGridPosition, ClearBusy);
             }
         }
     }
@@ -86,6 +81,10 @@ public class UnitActionSystem : MonoBehaviour
             {
                 if (hitInfo.transform.TryGetComponent<Unit>(out Unit unit))
                 {
+                    if(unit == selectedUnit)
+                    {
+                        return false;
+                    }
                     SetSelectedUnit(unit);
                     return true;
                 }
@@ -109,6 +108,11 @@ public class UnitActionSystem : MonoBehaviour
     public Unit GetSeletedUnit()
     {
         return selectedUnit;
+    }
+
+    public BaseAction GetSelectedAction()
+    {
+        return selectedAction;
     }
 }
 
