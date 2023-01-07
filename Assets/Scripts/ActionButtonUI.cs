@@ -7,15 +7,13 @@ using TMPro;
 public class ActionButtonUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI textMeshPro;
-    [SerializeField] private Button button;
-
+    [SerializeField] private ActionButtonUI button;
 
 
     public void SetBaseAction(BaseAction baseAction)
     {
-        print("setBaseAction");
-        
         textMeshPro.text = baseAction.GetActionName().ToUpper();
+<<<<<<< HEAD
 
 
         button.onClick.AddListener(() => {
@@ -31,5 +29,7 @@ public class ActionButtonUI : MonoBehaviour
     {
         print("clicked");
 
+=======
+>>>>>>> parent of cd48d16 (addListener working)
     }
 }
