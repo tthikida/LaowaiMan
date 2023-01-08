@@ -9,6 +9,7 @@ public class ActionButtonUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textMeshPro;
     [SerializeField] private Button button;
     [SerializeField] private GameObject selectedGameObject;
+    [SerializeField] private GameObject busyGameObject;
 
     private BaseAction baseAction;
 
