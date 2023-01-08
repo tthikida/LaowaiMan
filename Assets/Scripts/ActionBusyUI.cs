@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class ActionBusyUI : MonoBehaviour
 {
-
     private void Start()
     {
         UnitActionSystem.Instance.OnBusyChanged += UnitActionSystem_OnBusyChanged;
+        Hide();
     }
 
     private void Show()

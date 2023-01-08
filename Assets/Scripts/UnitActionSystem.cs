@@ -38,14 +38,9 @@ public class UnitActionSystem : MonoBehaviour
     private void Update()
     {
         if (isBusy) { return; }
-        if (EventSystem.current.currentSelectedGameObject)
-        {
-            return;
-        }
-        
+        if (EventSystem.current.currentSelectedGameObject){ return; }
         if (TryHandleUnitSelection()) { return; }
 
-        
         HandleSelectedAction();
     }
 
@@ -55,11 +50,11 @@ public class UnitActionSystem : MonoBehaviour
         {
             GridPosition mouseGridPosition = LevelGrid.Instance.GetGridPosition(MouseWorld.GetPosition());
 
-            if(selectedAction.IsValidActionGridPosition(mouseGridPosition))
-            {
-                SetBusy();
-                selectedAction.TakeAction(mouseGridPosition, ClearBusy);
-            }
+            if(!selectedAction.IsValidActionGridPosition(mouseGridPosition)){ return; }
+            if(!selectedUnit.TrySpendActionPointsToTakeAction(selectedAction)) { return; }
+                
+            SetBusy();
+            selectedAction.TakeAction(mouseGridPosition, ClearBusy);
         }
     }
 
