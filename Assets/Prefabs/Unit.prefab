@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: 2466038428348853497}
   - component: {fileID: -1832297615842104410}
   - component: {fileID: 2788895353456381383}
+  - component: {fileID: 4034593312182551407}
   m_Layer: 7
   m_Name: Unit
   m_TagString: Untagged
@@ -202,6 +203,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 907f1166ff9e0420280634ca8d7e2899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4034593312182551407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5618220145664739129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 588be8b0358b140269b22a4eb1a90555, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 5522775268641444187}
 --- !u!1001 &5618220145165904643
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -509,8 +523,7 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5672867890368703162, guid: 8dbb22b9d53a7664b8619d4c6888d92f, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8dbb22b9d53a7664b8619d4c6888d92f, type: 3}
 --- !u!95 &5522775268641444187 stripped
 Animator:

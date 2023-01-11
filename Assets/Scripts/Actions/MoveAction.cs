@@ -5,12 +5,11 @@ using UnityEngine;
 
 public class MoveAction : BaseAction
 {
-    [SerializeField] private float moveSpeed = 4f;
-    [SerializeField] private float rotateSpeed = 10f;
-    [SerializeField] private float stoppingDistance = 0.1f;
+    public event EventHandler OnStartMoving;
+    public event EventHandler OnStopMoving;
 
     [SerializeField] private Animator unitAnimator;
-    [SerializeField] private int maxMoveDistance = 1;
+    [SerializeField] private int maxMoveDistance = 4;
 
     private Vector3 targetPosition;
     
@@ -28,20 +27,21 @@ public class MoveAction : BaseAction
 
         if (NotAtDestination())
         {
+            float moveSpeed = 4f;
             transform.position += moveDirection * moveSpeed * Time.deltaTime;
-            unitAnimator.SetBool("IsRunning", true);
         }
         else
         {
-            unitAnimator.SetBool("IsRunning", false);
+            OnStopMoving?.Invoke(this, EventArgs.Empty);
             ActionComplete();
         }
-
+        float rotateSpeed = 10f;
         transform.forward = Vector3.Lerp(transform.forward, moveDirection, Time.deltaTime * rotateSpeed);
     }
 
     private bool NotAtDestination()
     {
+        float stoppingDistance = 0.1f;
         return Mathf.Abs(Vector3.Distance(transform.position, targetPosition)) > stoppingDistance;
     }
 
@@ -49,6 +49,7 @@ public class MoveAction : BaseAction
     {
         ActionStart(onActionComplete);
         this.targetPosition = LevelGrid.Instance.GetWorldPosition(gridPosition);
+        OnStartMoving?.Invoke(this, EventArgs.Empty);
     }
 
     

@@ -133,7 +133,6 @@ public class ShootAction : BaseAction
 
         targetUnit = LevelGrid.Instance.GetUnitAtGridPosition(gridPosition);
 
-        Debug.Log("Aiming");
         state = State.Aiming;
         float aimingStateTime = 1f;
         stateTimer = aimingStateTime;

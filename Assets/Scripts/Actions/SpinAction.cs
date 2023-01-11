@@ -14,6 +14,7 @@ public class SpinAction : BaseAction
 
         float spinAddAmount = 360f * Time.deltaTime;
         transform.eulerAngles += new Vector3(0, spinAddAmount, 0);
+
         totalSpinAmount += spinAddAmount;
         if (totalSpinAmount >= 360)
         {
@@ -21,9 +22,6 @@ public class SpinAction : BaseAction
         }
 
     }
-
-    public class BaseParameters { }
-    public class SpinBaseParameters : BaseParameters { }
 
     public override void TakeAction(GridPosition gridPosition, Action onActionComplete)
     {
