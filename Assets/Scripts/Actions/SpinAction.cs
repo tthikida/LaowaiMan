@@ -13,16 +13,11 @@ public class SpinAction : BaseAction
         if (!isActive) { return; }
 
         float spinAddAmount = 360f * Time.deltaTime;
-
         transform.eulerAngles += new Vector3(0, spinAddAmount, 0);
-        print(transform.eulerAngles);
-
-
         totalSpinAmount += spinAddAmount;
         if (totalSpinAmount >= 360)
         {
-            isActive = false;
-            onActionComplete();
+            ActionComplete();
         }
 
     }
@@ -32,8 +27,8 @@ public class SpinAction : BaseAction
 
     public override void TakeAction(GridPosition gridPosition, Action onActionComplete)
     {
-        this.onActionComplete = onActionComplete;
-        isActive = true;
+        ActionStart(onActionComplete);
+
         totalSpinAmount = 0f;
     }
 
