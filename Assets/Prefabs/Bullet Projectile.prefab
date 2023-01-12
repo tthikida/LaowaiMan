@@ -138,7 +138,7 @@ TrailRenderer:
     shadowBias: 0.5
     generateLightingData: 0
   m_MinVertexDistance: 0.1
-  m_Autodestruct: 0
+  m_Autodestruct: 1
   m_Emitting: 1
 --- !u!1 &6558893137214882839
 GameObject:
@@ -185,3 +185,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e0f476e5974948ddb24bcf829ff0dea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trailRenderer: {fileID: 6558893136672735991}
+  bulletHitVfxPrefab: {fileID: 8994629670016228146, guid: 277d80ea350fa4a158e46c53260b4bd7,
+    type: 3}
