@@ -174,9 +174,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07011b6e7ebef43a1a8c2d662d07d187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4
-  rotateSpeed: 10
-  stoppingDistance: 0.1
   unitAnimator: {fileID: 5522775268641444187}
   maxMoveDistance: 3
 --- !u!114 &-1832297615842104410
@@ -216,6 +213,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 5522775268641444187}
+  bulletProjectilePrefab: {fileID: 6558893137214882838, guid: 0e171abc2d512478c97d1489d4bf08ee,
+    type: 3}
+  shootPointTransform: {fileID: 8306259905940720248}
 --- !u!1001 &5618220145165904643
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -534,6 +534,12 @@ Animator:
 --- !u!4 &5613293449759562139 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4927815602188952, guid: 8dbb22b9d53a7664b8619d4c6888d92f,
+    type: 3}
+  m_PrefabInstance: {fileID: 5618220145165904643}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8306259905940720248 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4517724043249721723, guid: 8dbb22b9d53a7664b8619d4c6888d92f,
     type: 3}
   m_PrefabInstance: {fileID: 5618220145165904643}
   m_PrefabAsset: {fileID: 0}
